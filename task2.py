@@ -40,6 +40,8 @@ for file in file_list:
 fin1.close()
 
 fin2 = open('folder.list','a')
+file_judge = []
+k = 0
 for file in file_list:
     file_split = file.split('/')
     #temp1 = file_split[-1]
@@ -57,8 +59,16 @@ for file in file_list:
         continue
     if t2 - t1 == 1:
         continue
-#    elif t2 - t1 > 1:
-#        t = t2 - t1
-#        for i in range(t):
-        
-
+    elif t2 - t1 > 1:
+        t = t2 - t1
+        print('t:',t)
+        for i in range(t):
+            print('t1+i+1:',t1+i+1)
+        for i in range(t):
+            if file_split[t1+i+1] not in file_judge:
+                file_judge[k].append(file_split[t1+i+1])
+                k += 1
+            else:
+                continue
+    print(file_judge)
+fin2.close()
